@@ -1,8 +1,11 @@
 using ems2.Db;
 using ems2.Models;
+using ems2.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 
 namespace ems2.ViewModel
 {
@@ -19,6 +22,8 @@ namespace ems2.ViewModel
                  Search = string.Empty;
                  this.Query();
              });
+            EditCommand = new RelayCommand<int>(t => Edit(t));
+            DelCommand = new RelayCommand<int>(t => Del(t));
         }
 
         localDb localDb;
@@ -41,6 +46,9 @@ namespace ems2.ViewModel
         public RelayCommand QueryCommand { get; set; }
         public RelayCommand ResetCommand { get; set; }
 
+        public RelayCommand<int> EditCommand { get; set; }
+        public RelayCommand<int> DelCommand { get; set; }
+
         #endregion
 
         public void Query()
@@ -54,6 +62,37 @@ namespace ems2.ViewModel
                     GridModelList.Add(arg);
                 });
             }
+        }
+
+        public void Edit(int id)
+        {
+            var model = localDb.GetStudentById(id);
+            if(model!=null)
+            {
+                UserView view = new UserView(model);
+                var r = view.ShowDialog();
+                if (r.Value)
+                {
+                    var newModel = GridModelList.FirstOrDefault(t => t.Id == model.Id);
+                    if (newModel != null)
+                    {
+                        newModel.Name = model.Name;
+                    }
+                }
+            }
+        }
+
+        public void Del(int id)
+        {
+            var model = localDb.GetStudentById(id);
+            if (model != null)
+            {
+                var r = MessageBox.Show($"确认删除当前用户:{model.Name}?", "操作提示", MessageBoxButton.OK, MessageBoxImage.Question);
+                if(r==MessageBoxResult.OK)
+                    localDb.Delstudent(model.Id);
+                this.Query();
+            }
+            
         }
     }
 }

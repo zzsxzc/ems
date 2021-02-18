@@ -56,5 +56,19 @@ namespace ems2.Db
         {
             return Studentls.Where(q => q.Name.Contains(name)).ToList();
         }
+
+        public Student GetStudentById(int id)
+        {
+            var model = Studentls.FirstOrDefault(t => t.Id == id);
+            if(model!=null)
+            {
+                return new Student()
+                {
+                    Id = model.Id,
+                    Name = model.Name
+                };
+            }
+            return null; 
+        }
    }
 }
