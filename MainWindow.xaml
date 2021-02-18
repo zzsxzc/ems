@@ -12,13 +12,15 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="搜索条件:" VerticalAlignment="Center"/>
-            <TextBox Width="200" Height="25" Margin="10 0 0 0"/>
-            <Button Content="查找" Width="70" Height="25" Margin="10 0 0 0"/>
-            <Button Content="重置" Width="70" Height="25" Margin="10 0 0 0"/>
+            <TextBlock Text="搜索条件:"  VerticalAlignment="Center"/>
+            <TextBox Width="200" Height="25" Text="{Binding Search}" Margin="10 0 0 0"/>
+            <Button Content="查找" Command="{Binding QueryCommand}" Width="70" Height="25" Margin="10 0 0 0"/>
+            <Button Content="重置" Command="{Binding ResetCommand}" Width="70" Height="25" Margin="10 0 0 0"/>
             <Button Content="新增" Width="70" Height="25" Margin="10 0 0 0"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" ItemsSource="{Binding GridModelList}">
+        <DataGrid Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" 
+                  CanUserAddRows="False"
+                  ItemsSource="{Binding GridModelList}">
             <DataGrid.Columns> 
                 <DataGridTextColumn Header="序号" Binding="{Binding Id}"/>
                 <DataGridTextColumn Header="姓名" Binding="{Binding Name}"/>

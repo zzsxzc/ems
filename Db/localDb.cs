@@ -52,7 +52,7 @@ namespace ems2.Db
         }
 
         //根据名字查找
-        public List<Student> GetStudentByName(string name)
+        public List<Student> GetStudentsByName(string name)
         {
             return Studentls.Where(q => q.Name.Contains(name)).ToList();
         }
