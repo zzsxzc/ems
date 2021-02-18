@@ -18,10 +18,10 @@
             <Button Content="重置" Width="70" Height="25" Margin="10 0 0 0"/>
             <Button Content="新增" Width="70" Height="25" Margin="10 0 0 0"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="false">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="序号"/>
-                <DataGridTextColumn Header="姓名"/>
+        <DataGrid Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" ItemsSource="{Binding GridModelList}">
+            <DataGrid.Columns> 
+                <DataGridTextColumn Header="序号" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Name}"/>
                 <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

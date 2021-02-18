@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ems2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace ems2
         public MainWindow()
         {
             InitializeComponent();
+            MainViewModel viewModel = new MainViewModel();
+            viewModel.Query();
+
+            this.DataContext = viewModel;
         }
     }
 }

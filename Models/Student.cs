@@ -20,6 +20,15 @@ namespace ems2.Models
                 id = value; RaisePropertyChanged(); 
             }
         }
+        
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value; RaisePropertyChanged();
+            }
+        }
 
     }
 }
