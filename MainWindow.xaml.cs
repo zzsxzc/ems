@@ -24,6 +24,7 @@ namespace ems2
         public MainWindow()
         {
             InitializeComponent();
+            //在这里绑定ViewModel
             MainViewModel viewModel = new MainViewModel();
             viewModel.Query();
 
