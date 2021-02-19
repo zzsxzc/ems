@@ -70,6 +70,8 @@ namespace ems2.ViewModel
             if(model!=null)
             {
                 UserView view = new UserView(model);
+                //运行到这里会弹出对话框
+                //点击确定按钮，对话框的返回值为true，点击取消按钮，对话框的返回值为false
                 var r = view.ShowDialog();
                 if (r.Value)
                 {
