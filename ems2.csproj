@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Db\localDb.cs" />
+    <Compile Include="Db\LocalMysql.cs" />
     <Compile Include="Models\BtlCategory.cs" />
     <Compile Include="Models\Emp.cs" />
     <Compile Include="Models\Empcategory.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Models\Jjmain.cs" />
     <Compile Include="Models\Rygz.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Util\Zdate.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Views\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
