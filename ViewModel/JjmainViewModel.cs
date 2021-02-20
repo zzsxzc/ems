@@ -15,7 +15,8 @@ namespace ems2.ViewModel
     {
         public JjmainViewModel()
         {
-
+            localMysql = new LocalMysql();
+            QueryCommand = new RelayCommand(Query);
         }
         LocalMysql localMysql;
         private string search = string.Empty;
