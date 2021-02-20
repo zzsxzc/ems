@@ -16,7 +16,7 @@ namespace ems2.Db
         //连接参数
         static string conStr = "server=127.0.0.1;port=3306;user=root;password=jtwmydtsgx@666; database=ems;CharSet=utf8;";//数据库的信息
 
-
+        //计件分录(每人/日)
         public List<Jjmain> getJjmain()
         {
             List<Jjmain> Jjmains=null;
@@ -38,29 +38,19 @@ namespace ems2.Db
                     jjmain.Group = dataReader[2].ToString();
                     jjmain.Empname = dataReader[3].ToString();
                     jjmain.Empid = int.Parse(dataReader[4].ToString());
-                    jjmain.gx = dataReader[1].ToString();
-                    jjmain.Group = dataReader[2].ToString();
-                    jjmain.Empname = dataReader[3].ToString();
-                    jjmain.Empname = dataReader[3].ToString();
+                    jjmain.Gxgz = dataReader[5].ToString();
+                    jjmain.Rygz = dataReader[6].ToString();
+                    jjmain.Gwmx = dataReader[7].ToString();
+                    jjmain.Btlcategory = dataReader[8].ToString();
+                    jjmain.Spdj = double.Parse(dataReader[9].ToString());
+                    jjmain.Xs = double.Parse(dataReader[10].ToString());
+                    jjmain.Sjjp = double.Parse(dataReader[11].ToString());
+                    jjmain.Cl = double.Parse(dataReader[12].ToString());
+                    jjmain.Rgz = double.Parse(dataReader[13].ToString());
+                    jjmain.Llgs = double.Parse(dataReader[14].ToString());
+                    jjmain.Workdate = dataReader[15].ToString();
 
-                    //
-                    //Console.WriteLine(dataReader[0].ToString() + " " +
-                    //                            dataReader[1].ToString() + " " +
-                    //                            dataReader[2].ToString() + " " +
-                    //                            dataReader[3].ToString() + " " +
-                    //                            dataReader[4].ToString() + " " +
-                    //                            dataReader[5].ToString() + " " +
-                    //                            dataReader[6].ToString() + " " +
-                    //                            dataReader[7].ToString() + " " +
-                    //                            dataReader[8].ToString() + " " +
-                    //                            dataReader[9].ToString() + " " +
-                    //                            dataReader[10].ToString() + " " +
-                    //                            dataReader[11].ToString() + " " +
-                    //                            dataReader[12].ToString() + " " +
-                    //                            dataReader[13].ToString() + " " +
-                    //                            dataReader[14].ToString() + " " +
-                    //                            dataReader[15].ToString()
-                    //    );
+                    Jjmains.Add(jjmain);
                 }
                 //MessageBox.Show("恭喜，已经建立连接！");
                 Console.ReadLine();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ems2.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,9 @@ namespace ems2.Views
         public jjmain()
         {
             InitializeComponent();
+            JjmainViewModel viewModel = new JjmainViewModel();
+            viewModel.Query();
+            this.DataContext = viewModel;
         }
     }
 }

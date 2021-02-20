@@ -26,7 +26,8 @@ namespace ems2.Models
         private double cl;//产量
         private double rgz;//日工资
         private double llgs;//理论工时
-        private DateTime workdate;//日期
+        //private DateTime workdate;//日期
+        private string workdate;//日期
 
         public int Id
         {
@@ -68,6 +69,14 @@ namespace ems2.Models
             set
             {
                 empid = value; RaisePropertyChanged();
+            }
+        }
+        public string Gxgz
+        {
+            get { return gxgz; }
+            set
+            {
+                gxgz = value; RaisePropertyChanged();
             }
         }
         public string Rygz
@@ -142,7 +151,16 @@ namespace ems2.Models
                 llgs = value; RaisePropertyChanged();
             }
         }
-        public DateTime Workdate
+        //public DateTime Workdate
+        //{
+        //    get { return workdate; }
+        //    set
+        //    {
+        //        workdate = value; RaisePropertyChanged();
+        //    }
+        //}
+
+        public string Workdate
         {
             get { return workdate; }
             set

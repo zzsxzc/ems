@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ems2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1050" Width="1680">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -23,7 +23,20 @@
                   ItemsSource="{Binding GridModelList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="序号" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="姓名" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="类别" Binding="{Binding Empcategory}"/>
+                <DataGridTextColumn Header="班组" Binding="{Binding Group}"/>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Empname}"/>
+                <DataGridTextColumn Header="工序工种" Binding="{Binding Gxgz}"/>
+                <DataGridTextColumn Header="人员工种" Binding="{Binding Rygz}"/>
+                <DataGridTextColumn Header="岗位明细" Binding="{Binding Gwmx}"/>
+                <DataGridTextColumn Header="类别" Binding="{Binding Btlcategory}"/>
+                <DataGridTextColumn Header="审批单价" Binding="{Binding Spdj}"/>
+                <DataGridTextColumn Header="系数" Binding="{Binding Xs}"/>
+                <DataGridTextColumn Header="时间节拍" Binding="{Binding Sjjp}"/>
+                <DataGridTextColumn Header="产量" Binding="{Binding Cl}"/>
+                <DataGridTextColumn Header="日工资" Binding="{Binding Rgz}"/>
+                <DataGridTextColumn Header="理论工时" Binding="{Binding Llgs}"/>
+                <DataGridTextColumn Header="日期" Binding="{Binding Workdate}"/>
                 <DataGridTemplateColumn Header="操作">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
