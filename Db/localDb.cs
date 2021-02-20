@@ -30,6 +30,21 @@ namespace ems2.Db
                 }) ;
 
             }
+            Studentls.Add(new Student()
+            {
+                Id=66,
+                Name="66"
+            });
+            Studentls.Add(new Student()
+            {
+                Id = 66,
+                Name = "haha"
+            });
+            Studentls.Add(new Student()
+            {
+                Id = 77,
+                Name = "66"
+            });
         }
 
         public List<Student> GetStudents()

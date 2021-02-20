@@ -16,6 +16,7 @@ namespace ems2.Models
         private string group;//班组
         private string empname;//员工姓名
         private int empid;//员工编号
+        private string gxgz;//人员工种
         private string rygz;//人员工种
         private string gwmx;//岗位明细
         private string btlcategory;//产品种类
