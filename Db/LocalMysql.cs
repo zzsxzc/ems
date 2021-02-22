@@ -67,6 +67,66 @@ namespace ems2.Db
             }
         }
 
+        public List<Jjmain> getJjmainByName(string name)
+        {
+            string query;
+            if (name==string.Empty)
+            {
+                query = "SELECT * FROM ems_jjmain";
+            }
+            else
+            {
+                query = "SELECT * FROM ems_jjmain WHERE empname LIKE '%" + name + "%';";  //sql查询语句 根据姓名模糊查询（包含逻辑）
+            }
+
+            List<Jjmain> Jjmains = new List<Jjmain>();
+
+            MySqlConnection connect = new MySqlConnection(conStr);
+            try
+            {
+                connect.Open();//建立连接，可能出现异常,使用try catch语句
+                //string query = "SELECT * FROM ems_jjmain WHERE empname = /'%"+name+"%/';";  //sql查询语句 根据姓名模糊查询（包含逻辑）
+                MySqlCommand cmd = new MySqlCommand(query, connect);    //将查询语句放进该数据库容器中
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    //类型转换 空指针
+
+                    Jjmain jjmain = new Jjmain();
+                    jjmain.Id = changeToInt(dataReader[0]);
+                    jjmain.Empcategory = dataReader[1].ToString();
+                    jjmain.Group = dataReader[2].ToString();
+                    jjmain.Empname = dataReader[3].ToString();
+                    jjmain.Empid = changeToInt(dataReader[4]);
+                    jjmain.Gxgz = dataReader[5].ToString();
+                    jjmain.Rygz = dataReader[6].ToString();
+                    jjmain.Gwmx = dataReader[7].ToString();
+                    jjmain.Btlcategory = dataReader[8].ToString();
+                    jjmain.Spdj = changeToDouble(dataReader[9]);
+                    jjmain.Xs = changeToDouble(dataReader[10]);
+                    jjmain.Sjjp = changeToDouble(dataReader[11]);
+                    jjmain.Cl = changeToDouble(dataReader[12]);
+                    jjmain.Rgz = changeToDouble(dataReader[13]);
+                    jjmain.Llgs = changeToDouble(dataReader[14]);
+                    jjmain.Workdate = dataReader[15] == null ? null : dataReader[15].ToString();
+
+                    Jjmains.Add(jjmain);
+                }
+                //MessageBox.Show("恭喜，已经建立连接！");
+                Console.ReadLine();
+                return Jjmains;
+            }
+            catch (MySqlException exe)
+            {
+                return null;
+            }
+            finally
+            {
+                connect.Close();//关闭通道
+            }
+        }
+
         //两个参数, 如果参数b tostring为"",a和b赋值-1
         private int changeToInt(Object o)
         {

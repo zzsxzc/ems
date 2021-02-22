@@ -17,6 +17,11 @@ namespace ems2.ViewModel
         {
             localMysql = new LocalMysql();
             QueryCommand = new RelayCommand(Query);
+            ResetCommand = new RelayCommand(() =>
+            {
+                Search = string.Empty;
+                this.Query();
+            });
         }
         LocalMysql localMysql;
         private string search = string.Empty;
@@ -46,7 +51,7 @@ namespace ems2.ViewModel
         public void Query()
         {
 
-            var models = localMysql.getJjmain();
+            var models = localMysql.getJjmainByName(Search);
             GridModelList = new ObservableCollection<Jjmain>();
             if (models != null)
             {
