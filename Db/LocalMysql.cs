@@ -7,6 +7,7 @@ using ems2.Models;
 using MySql.Data.MySqlClient;
 /**
  * 数据库操作都放在这里面
+ * zzstodo 增加查询缓存 如果没有发生增删改，直接读取内存缓存(是否需要static?)
  */
 namespace ems2.Db
 {
