@@ -19,7 +19,7 @@ namespace ems2.Db
         //计件分录(每人/日)
         public List<Jjmain> getJjmain()
         {
-            List<Jjmain> Jjmains=null;
+            List<Jjmain> Jjmains=new List<Jjmain>();
 
             MySqlConnection connect = new MySqlConnection(conStr);
             try
@@ -34,23 +34,21 @@ namespace ems2.Db
                     //类型转换 空指针
 
                     Jjmain jjmain = new Jjmain();
-                    jjmain.Id = dataReader[0]==null?-1:int.Parse(dataReader[0].ToString());
-                    jjmain.Empcategory = dataReader[1] == null ? null : dataReader[1].ToString();
-                    jjmain.Group = dataReader[2] == null ? null : dataReader[2].ToString();
-                    jjmain.Empname = dataReader[3] == null ? null : dataReader[3].ToString();
-                    //zzstag 就算数据库中为空，dataReader[4]也不为null
-                    Boolean test = dataReader[4] == null ? true : false;
-                    jjmain.Empid = dataReader[4] == null ? -1 : int.Parse(dataReader[4].ToString());
-                    jjmain.Gxgz = dataReader[5] == null ? null : dataReader[5].ToString();
-                    jjmain.Rygz = dataReader[6] == null ? null : dataReader[6].ToString();
-                    jjmain.Gwmx = dataReader[7] == null ? null : dataReader[7].ToString();
-                    jjmain.Btlcategory = dataReader[8] == null ? null : dataReader[8].ToString();
-                    jjmain.Spdj = dataReader[9] == null ? -1 : double.Parse(dataReader[9].ToString());
-                    jjmain.Xs = dataReader[10] == null ? -1 : double.Parse(dataReader[10].ToString());
-                    jjmain.Sjjp = dataReader[11] == null ? -1 : double.Parse(dataReader[11].ToString());
-                    jjmain.Cl = dataReader[12] == null ? -1 : double.Parse(dataReader[12].ToString());
-                    jjmain.Rgz = dataReader[13] == null ? -1 : double.Parse(dataReader[13].ToString());
-                    jjmain.Llgs = dataReader[14] == null ? -1 : double.Parse(dataReader[14].ToString());
+                    jjmain.Id = changeToInt(dataReader[0]);
+                    jjmain.Empcategory = dataReader[1].ToString();
+                    jjmain.Group = dataReader[2].ToString();
+                    jjmain.Empname = dataReader[3].ToString();
+                    jjmain.Empid = changeToInt(dataReader[4]);
+                    jjmain.Gxgz = dataReader[5].ToString();
+                    jjmain.Rygz = dataReader[6].ToString();
+                    jjmain.Gwmx = dataReader[7].ToString();
+                    jjmain.Btlcategory = dataReader[8].ToString();
+                    jjmain.Spdj = changeToDouble(dataReader[9]);
+                    jjmain.Xs = changeToDouble(dataReader[10]);
+                    jjmain.Sjjp = changeToDouble(dataReader[11]);
+                    jjmain.Cl = changeToDouble(dataReader[12]);
+                    jjmain.Rgz = changeToDouble(dataReader[13]);
+                    jjmain.Llgs = changeToDouble(dataReader[14]);
                     jjmain.Workdate = dataReader[15] == null ? null : dataReader[15].ToString();
 
                     Jjmains.Add(jjmain);
@@ -66,6 +64,31 @@ namespace ems2.Db
             finally
             {
                 connect.Close();//关闭通道
+            }
+        }
+
+        //两个参数, 如果参数b tostring为"",a和b赋值-1
+        private int changeToInt(Object o)
+        {
+            if(o.ToString().Equals(""))
+            {
+                return -1;
+            }
+            else
+            {
+                return int.Parse(o.ToString());
+            }    
+        }
+
+        private double changeToDouble(Object o)
+        {
+            if (o.ToString().Equals(""))
+            {
+                return -1;
+            }
+            else
+            {
+                return double.Parse(o.ToString());
             }
         }
 
