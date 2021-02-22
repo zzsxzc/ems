@@ -19,10 +19,10 @@
             <Button Content="新增" Width="70" Height="25" Margin="10 0 0 0"/>
         </StackPanel>
         <DataGrid Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" 
-                  CanUserAddRows="False"
+                  CanUserAddRows="False" 
                   ItemsSource="{Binding GridModelList}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="序号" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="序号" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="类别" Binding="{Binding Empcategory}"/>
                 <DataGridTextColumn Header="班组" Binding="{Binding Group}"/>
                 <DataGridTextColumn Header="姓名" Binding="{Binding Empname}"/>
@@ -37,22 +37,6 @@
                 <DataGridTextColumn Header="日工资" Binding="{Binding Rgz}"/>
                 <DataGridTextColumn Header="理论工时" Binding="{Binding Llgs}"/>
                 <DataGridTextColumn Header="日期" Binding="{Binding Workdate}"/>
-                <DataGridTemplateColumn Header="操作">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="修改" Width="60" Height="25" Background="White" Foreground="Black"
-                                        CommandParameter="{Binding Id}"
-                                        Command="{Binding DataContext.EditCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"
-                                        />
-                                <Button Content="删除" Width="60" Height="25" Background="Red" Foreground="White"
-                                        CommandParameter="{Binding Id}"
-                                        Command="{Binding DataContext.DelCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGrid}}"
-                                        />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
